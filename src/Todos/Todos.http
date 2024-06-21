@@ -1,0 +1,35 @@
+@Todos= https://localhost:7225/todos
+
+### GET TODOS
+
+GET {{Todos}}
+Accept: application/json
+
+
+### CREATE TODO ERROR
+
+POST {{Todos}}
+Content-Type: application/json
+
+{
+  "title": "error"
+}
+
+
+### CREATE TODO
+POST {{Todos}}
+Content-Type: application/json
+
+{
+  "title": "ok"
+}
+
+> {% client.global.set('id',response.body.toString()) %}
+
+
+### COMPLETE TODO
+PUT{{Todos}}/{{id}}/complete
+
+
+### GET TODO
+GET {{Todos}}/{{id}}

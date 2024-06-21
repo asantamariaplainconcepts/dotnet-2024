@@ -1,0 +1,95 @@
+﻿@page "/"
+@using Contracts
+@using Microsoft.AspNetCore.SignalR.Client
+@using Todos.Features.Todo.Commands
+@using Todos.Features.Todo.Queries
+@inject IHttpClientFactory httpClientFactory
+@inject IToastService ToastService
+@inject IHttpMessageHandlerFactory HttpMessageHandlerFactory
+@rendermode InteractiveServer
+
+
+<h1>Todos</h1>
+
+
+<FluentStack>
+    <FluentTextField @bind-Value=newTodo.Title AriaLabel="No label" Placeholder="New Todo"></FluentTextField>
+    <FluentButton @onclick="CreateTodo">Add</FluentButton>
+</FluentStack>
+<FluentDataGrid Id="todos-grid" Items="@todos" GridTemplateColumns="1fr 1fr 1fr 2fr" TGridItem="GetTodos.Response">
+    <PropertyColumn Title="Title" Property="@(c => c!.Title)" Align="Align.Start"/>
+    <PropertyColumn Title="Completed" Property="@(c => c!.IsCompleted)" Align="Align.Center"/>
+    <PropertyColumn Title="Worker" Property="@(c => c!.worker)" Align="Align.Start"/>
+    <TemplateColumn Title="Actions" Align="@Align.End">
+        <FluentButton Disabled="context.IsCompleted" aria-label="Complete item" IconEnd="@(new Icons.Regular.Size16.Checkmark())" OnClick="@(() => CompleteTodo(context.Id))"/>
+        <FluentButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size16.Delete())" OnClick="@(() => DeleteTodo(context.Id))"/>
+    </TemplateColumn>
+</FluentDataGrid>
+
+
+@code {
+    private IQueryable<GetTodos.Response>? todos;
+    private CreateTodo.Command newTodo = new();
+    HttpClient HttpClient => httpClientFactory.CreateClient("todo-api");
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+        await LoadHub();
+    }
+
+    private async Task LoadData()
+    {
+        var data =  await HttpClient.GetFromJsonAsync<IEnumerable<GetTodos.Response>>("/todos");
+        if (data is not null)
+            todos = data.AsQueryable();
+    }
+
+    private async Task CreateTodo()
+    {
+        try
+        {
+            await HttpClient.PostAsJsonAsync("/todos", newTodo);
+            newTodo = new CreateTodo.Command();
+
+            await LoadData();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private async Task CompleteTodo(string id)
+    {
+        await HttpClient.PutAsync($"todos/{id}/complete", null);
+        await LoadData();
+    }
+
+    private async Task DeleteTodo(string id)
+    {
+        await HttpClient.DeleteAsync($"todos/{id}");
+        await LoadData();
+    }
+    
+    private HubConnection? hubConnection;
+
+    private async Task LoadHub()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl("https+http://todo-api/hubs/todo", HttpMessageHandlerFactory)
+            .Build();
+    
+        hubConnection.On("SendCompleted", (TodoCompleted todoCompleted) =>
+        {
+            ToastService.ShowSuccess($"Todo {todoCompleted.Title} completed by {todoCompleted.User}");
+        });
+        
+        hubConnection.On("SendWorker", (string worker) =>
+        {
+            ToastService.ShowSuccess($"Worker {worker} is working on a todo.");
+        });
+    
+        await hubConnection.StartAsync();
+    }
+}

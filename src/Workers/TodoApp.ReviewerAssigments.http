@@ -1,0 +1,11 @@
+@TodoApp.ReviewerAssigments_HostAddress = http://localhost:5072
+
+GET {{TodoApp.ReviewerAssigments_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{TodoApp.ReviewerAssigments_HostAddress}}/todos/1
+Accept: application/json
+
+###

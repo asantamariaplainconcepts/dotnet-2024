@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>BlazorApp</RootNamespace>
+        <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+        <UserSecretsId>5ec801ff-3100-48d5-9588-850d80531be5</UserSecretsId>
+        <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server"/>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client"/>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.SourceGenerator"/>
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components"/>
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Notifications\Notifications.csproj"/>
+        <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj"/>
+        <ProjectReference Include="..\Todos\Todos.csproj"/>
+    </ItemGroup>
+
+</Project>

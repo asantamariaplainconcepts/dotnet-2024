@@ -1,0 +1,94 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+    <AspireVersion>8.0.1</AspireVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--     Aspire packages -->
+    <PackageVersion Include="Aspirant.Hosting" Version="0.0.4" />
+    <PackageVersion Include="Aspire.Hosting" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.Azure.EventHubs" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.Azure.Redis" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.Azure.ServiceBus" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.Azure.Sql" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.AspNetCore.HealthChecks" Version="$(AspireVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Rabbitmq" Version="$(AspireVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Redis" Version="8.0.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.SqlServer" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.StackExchange.Redis" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.StackExchange.Redis.DistributedCaching" Version="$(AspireVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="8.0.1" />
+    <PackageVersion Include="dbup" Version="5.0.40" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client.SourceGenerator" Version="7.0.0-preview.7.22376.6" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="$(AspireVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.5.0" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.0.0-beta.11" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.8.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.8.1" />
+    <!--     Blazor -->
+    <PackageVersion Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.7.2" />
+    <PackageVersion Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.7.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.6" />
+    <!--     Other packages -->
+    <PackageVersion Include="MediatR" Version="12.2.0" />
+    <PackageVersion Include="MassTransit" Version="8.2.2" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="MassTransit.EntityFrameworkCore" Version="8.2.2" />
+    <PackageVersion Include="MassTransit.RabbitMQ" Version="8.2.2" />
+    <PackageVersion Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
+    <PackageVersion Include="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    <PackageVersion Include="Refit" Version="7.0.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
+    <!--     Test packages -->
+    <PackageVersion Include="Aspire.Hosting.Testing"  Version="8.0.1"/>
+    <PackageVersion Include="Aspirant.Hosting.Testing" Version="0.0.4" />
+    <PackageVersion Include="Aspirant.Hosting.Testing.xunit" Version="0.0.4" />
+    <PackageVersion Include="Acheve.TestHost" Version="3.5.0" />
+    <PackageVersion Include="ColoredConsole" Version="1.0.0" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageVersion Include="NetArchTest.eNhancedEdition" Version="1.4.3" />
+    <PackageVersion Include="Respawn" Version="6.2.1" />
+    <PackageVersion Include="Testcontainers" Version="3.8.0" />
+    <PackageVersion Include="Testcontainers.MsSql" Version="3.8.0" />
+    <PackageVersion Include="Testcontainers.Redis" Version="3.8.0" />
+    <PackageVersion Include="xunit" Version="2.8.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+  </ItemGroup>
+</Project>

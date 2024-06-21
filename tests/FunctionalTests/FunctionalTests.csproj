@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Acheve.TestHost" />
+		<PackageReference Include="FluentAssertions" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" />
+		<PackageReference Include="Respawn" />
+		<PackageReference Include="Testcontainers" />
+		<PackageReference Include="Testcontainers.MsSql" />
+		<PackageReference Include="Testcontainers.Redis" />
+		<PackageReference Include="xunit" />
+		<PackageReference Include="xunit.runner.visualstudio">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\Api\Api.csproj" />
+	  <ProjectReference Include="..\..\src\Todos\Todos.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageVersion Update="EntityFramework" Version="6.4.4" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Workers\Workers.csproj" />
+      <ProjectReference Include="..\..\src\Todos\Todos.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="dbup" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\infra\database\migrations\**" CopyToOutputDirectory="Always" LinkBase="migrations" />
+        <None Include="..\..\infra\database\seeds\**" CopyToOutputDirectory="Always" LinkBase="seeds" />
+    </ItemGroup>
+    
+</Project>

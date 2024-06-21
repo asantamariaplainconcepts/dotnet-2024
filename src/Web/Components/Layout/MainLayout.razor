@@ -1,0 +1,25 @@
+﻿@using Contracts
+@using Microsoft.AspNetCore.SignalR.Client
+@inherits LayoutComponentBase
+
+<FluentLayout>
+    <FluentHeader>
+        Web
+    </FluentHeader>
+    <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
+        <NavMenu/>
+        <FluentBodyContent Class="body-content">
+            <div class="content">
+                @Body
+            </div>
+        </FluentBodyContent>
+    </FluentStack>
+    <FluentToastProvider @rendermode="InteractiveServer" MaxToastCount="10" />
+</FluentLayout>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
